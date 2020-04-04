@@ -9,6 +9,7 @@
 !$httpRedirect1 = "<back:purple><color:purple>-<color:white>301<color:purple>-</color></back>" 
 !$httpRedirect2 = "<back:purple><color:purple>-<color:white>↳ 301<color:purple>-</color></back>" 
 
+' warning! breaks newpage stuff
 !pragma teoz true
 
 skinparam BoxPadding 10
@@ -37,7 +38,42 @@ sequenceDiagram {
     }
 
     participant {
-        LineThickness 1
+        LineThickness 2
+        RoundCorner 10
+        LineColor #ABB2B9
+        BackgroundColor #EAECEE
+    }
+
+    database {
+        LineThickness 2
+        RoundCorner 10
+        LineColor #ABB2B9
+        BackgroundColor #EAECEE
+    }
+
+    entity {
+        LineThickness 2
+        RoundCorner 10
+        LineColor #ABB2B9
+        BackgroundColor #EAECEE
+    }
+
+    control {
+        LineThickness 2
+        RoundCorner 10
+        LineColor #ABB2B9
+        BackgroundColor #EAECEE
+    }
+
+    boundary {
+        LineThickness 2
+        RoundCorner 10
+        LineColor #ABB2B9
+        BackgroundColor #EAECEE
+    }
+
+    collections {
+        LineThickness 2
         RoundCorner 10
         LineColor #ABB2B9
         BackgroundColor #EAECEE
@@ -58,6 +94,12 @@ sequenceDiagram {
         BackgroundColor #white
         LineColor #ABB2B9
     }
+
+    ' delay {
+    '     BackgroundColor #white
+    '     LineColor #ABB2B9
+    '     LineThickness 10
+    ' }
 
     box {
         BackgroundColor #F3F3F3
@@ -151,4 +193,5 @@ skinparam sequence {
     DividerFontStyle normal
     ' this is for Duration arrow only :(
     ArrowColor #454645
+    NewpageSeparatorColor #red
 }
