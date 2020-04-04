@@ -1,0 +1,154 @@
+
+' !$httpGet = "<size:15><&data-transfer-download></size>"
+' !$httpRedirect1 = "<size:15><&arrow-circle-left></size>"
+' !$httpRedirect2 = "<size:15><&arrow-circle-right></size>"
+
+!$httpGet = "<back:grey><color:grey>-<color:white>GET<color:grey>-</color></back>" 
+!$http200 = "<back:#physical><color:#physical>-<color:#green>200<color:#physical>-</color></back>" 
+!$http404 = "<back:red><color:red>-<color:white>404<color:red>-</color></back>" 
+!$httpRedirect1 = "<back:purple><color:purple>-<color:white>301<color:purple>-</color></back>" 
+!$httpRedirect2 = "<back:purple><color:purple>-<color:white>↳ 301<color:purple>-</color></back>" 
+
+!pragma teoz true
+
+skinparam BoxPadding 10
+skinparam ParticipantPadding 5
+'skinparam Padding 5
+
+' set for Divider only 
+skinparam Shadowing false
+
+' skinparam monochrome reverse
+' skinparam WrapWidth 100
+' skinparam NoteBorderColor #BD0031
+' skinparam NoteBackgroundColor #BD0031
+
+skinparam useBetaStyle true
+<style>
+
+sequenceDiagram {   
+
+    'LineThickness 2
+    
+    arrow {
+        'LineThickness 3
+        LineColor #454645
+        LineThickness 1
+    }
+
+    participant {
+        LineThickness 1
+        RoundCorner 10
+        LineColor #ABB2B9
+        BackgroundColor #EAECEE
+    }
+
+    actor {
+        LineThickness 2
+        LineColor #ABB2B9
+        BackgroundColor #EAECEE
+    }
+
+    duration {
+        LineColor #ABB2B9
+    }
+
+    lifeLine {
+        'BackgroundColor #FFDDDD
+        BackgroundColor #white
+        LineColor #ABB2B9
+    }
+
+    box {
+        BackgroundColor #F3F3F3
+        LineThickness 2
+        LineColor #EEEEEE
+        Padding 10
+        RoundCorner 20
+    }
+
+    group {
+        FontStyle normal
+        LineThickness 0.5
+        LineColor #AAAAAA
+        'RoundCorner 10
+        FontColor #AAAAAA
+    }
+
+    'does not work at all
+    'divider {
+        'does not work Shadowing 0
+        ' LineColor #red
+        ' FontColor #AAAAAA
+    '}
+
+    groupHeader {
+        FontStyle normal
+        FontColor #AAAAAA
+        LineColor #AAAAAA
+        LineThickness 0.5
+    }
+
+    ' A bug: does not affect on divider + does not like 'true|false'
+    Shadowing 0
+
+    .codeNote {
+        BackgroundColor #f0f0f0
+        FontColor #333333
+        LineThickness 0.5
+        FontSize 10
+        LineColor #999999
+        'FontStyle bold
+	}
+
+    infoNote {
+        LineColor #B7950B
+        BackgroundColor #FCF3CF
+    }
+
+    .processLabel {
+        BackgroundColor #b20034
+        FontColor #white
+        RoundCorner 10
+    }
+
+    .redirectLabel {
+        BackgroundColor #transparent
+        LineThickness 0
+        FontColor #white
+        ' RoundCorner 10
+    }
+
+    'Set it neither here nor in skinparam: a bug in engine with background color
+    'it is better use custom styles for all notes! 
+    'note {
+        'LineColor #B7950B
+        'BackgroundColor #FCF3CF
+    '}
+
+	'note1 { 
+	'   BackgroundColor GreenYellow 
+    '   RoundCorner 10
+    '   LineStyle 10;2
+       'Padding 40
+	'}
+
+	'rnote1 { 
+	'   BackgroundColor White 
+    '   RoundCorner 10
+    '   LineStyle 10;2
+       'Padding 40
+	'}
+
+}
+</style> 
+
+'should be set AFTER style
+skinparam sequence {
+    DividerBorderColor #ABB2B9
+    DividerBackgroundColor #FFFFFF
+    DividerBorderThickness 1
+    DividerFontStyle normal
+    ' this is for Duration arrow only :(
+    ArrowColor #454645
+}
