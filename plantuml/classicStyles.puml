@@ -1,11 +1,8 @@
+' This is for diagrams that do not support <style>s. 
+
 'To find a keyword
 'java -jar ~/.vscode/extensions/jebbs.plantuml-2.13.6/plantuml.jar -language | grep -i ...
-
 ' Also, default values are in plantuml.jar/skin/*.skin files
-
-' !$httpGet = "<size:15><&data-transfer-download></size>"
-' !$httpRedirect1 = "<size:15><&arrow-circle-left></size>"
-' !$httpRedirect2 = "<size:15><&arrow-circle-right></size>"
 
 !$httpGet = "<back:grey><color:grey>-<color:white>GET<color:grey>-</color></back>" 
 !$http200 = "<back:#physical><color:#physical>-<color:#green>200<color:#physical>-</color></back>" 
@@ -28,6 +25,59 @@ skinparam Shadowing false
 ' skinparam NoteBorderColor #BD0031
 ' skinparam NoteBackgroundColor #BD0031
 
+!define _MK_DGREY #454645
+!define _MK_GREY #ABB2B9
+!define _MK_LGREY #EAECEE
+!define _MK_NOTE_BG #FCF3CF
+!define _MK_NOTE_BORDER #B7950B
+
+skinparam class {
+    ArrowColor _MK_DGREY
+    ArrowFontSize 11
+    HeaderBackgroundColor _MK_LGREY
+    BackgroundColor #white
+    BorderColor _MK_GREY
+    BorderThickness 1
+    'AttributeIconSize 0
+    'AttributeFontColor #red
+}
+
+skinparam stereotypeCBackgroundColor _MK_LGREY
+skinparam StereotypeCBorderColor _MK_GREY
+' skinparam CircledCharacterRadius 10
+' skinparam CircledCharacterFontColor #red
+skinparam StereotypeEBackgroundColor #implementation
+skinparam StereotypeEBorderColor #implementation
+
+skinparam note {
+    BorderColor _MK_NOTE_BORDER
+    BackgroundColor _MK_NOTE_BG
+}
+
+skinparam package {
+    BackGroundColor white
+    BorderColor _MK_LGREY
+    BorderThickness 1
+    FontSize 11
+    FontColor _MK_GREY
+}
+
+' group {
+'   BackGroundColor white
+  
+'   FontStyle bold
+' }
+
+' groupHeader {
+'   BackGroundColor #EEEEEE
+'   LineColor black
+
+'   FontSize 13
+'   FontStyle bold
+' }
+
+
+/'
 skinparam useBetaStyle true
 <style>
 
@@ -228,3 +278,255 @@ skinparam sequence {
     'this is for delay ... only 
     lifeLineBorderColor #ABB2B9
 }
+'/
+
+/'
+Default values taken from plantuml/skin/plantuml.skin 
+
+root {
+  FontName SansSerif
+  HyperLinkColor blue
+  FontColor black
+  FontSize 14
+  FontStyle plain
+  HorizontalAlignment left
+  RoundCorner 0
+  DiagonalCorner 0
+  LineThickness 1.0
+  LineColor #A80036
+  BackGroundColor #FEFECE
+  Shadowing 0.0
+}
+
+stereotype {
+  FontStyle italic
+}
+
+title {
+  HorizontalAlignment center
+  FontSize 14
+  FontStyle bold
+  Padding 0
+  Margin 4
+  LineColor none
+  BackGroundColor none
+}
+
+header {
+  HorizontalAlignment right
+  FontSize 10
+  FontColor #888888
+  BackGroundColor none
+  LineColor none
+}
+
+footer {
+  HorizontalAlignment center
+  FontSize 10
+  FontColor #888888
+  BackGroundColor none
+  LineColor none
+}
+
+legend {
+  LineColor black
+  BackGroundColor #DDDDDD
+  FontSize 14
+  RoundCorner 15
+  Padding 6
+  Margin 8
+}
+
+caption {
+  HorizontalAlignment center
+  FontSize 14
+  Padding 0
+  Margin 1
+  LineColor none
+  BackGroundColor none
+}
+
+
+element {
+  Shadowing 4.0
+}
+
+sequenceDiagram {
+}
+
+classDiagram {
+}
+
+
+group {
+  BackGroundColor white
+  LineColor black
+  LineThickness 2.0
+  FontSize 11
+  
+  FontStyle bold
+}
+
+groupHeader {
+  BackGroundColor #EEEEEE
+  LineColor black
+
+  FontSize 13
+  FontStyle bold
+}
+
+lifeLine {
+  BackGroundColor white
+}
+
+destroy {
+}
+
+reference {
+  FontSize 12
+  LineColor black
+  BackGroundColor while
+  LineThickness 2.0
+  HorizontalAlignment center
+}
+
+referenceHeader {
+  LineColor black
+  BackGroundColor #EEEEEE
+  FontColor black
+  FontSize 13
+  FontStyle bold
+  LineThickness 2.0
+}
+
+box {
+  BackGroundColor #DDDDDD
+
+  FontSize 13
+  FontStyle bold
+}
+
+separator {
+  LineColor black
+  LineThickness 2.0
+  BackGroundColor #EEEEEE
+  
+  FontSize 13
+  FontStyle bold
+}
+
+delay {
+  FontSize 11
+  FontStyle plain
+  HorizontalAlignment center
+}
+
+participant {
+  LineThickness 1.5
+}
+
+actor {
+  LineThickness 2.0
+}
+
+boundary {
+}
+
+control {
+}
+
+entity {
+}
+
+queue {
+}
+
+database {
+}
+
+collections {
+}
+
+swimlane {
+  BackGroundColor none
+  LineColor black
+  LineThickness 2
+  FontSize 18
+}
+
+diamond {
+  Shadowing 3.0
+}
+
+arrow {
+  FontSize 13
+}
+
+note {
+  FontSize 13
+  BackGroundColor #FBFB77
+}
+
+partition {
+}
+
+circle {
+}
+
+mindmapDiagram {
+}
+
+mindmapDiagram {
+	node {
+	    Padding 10
+	    Margin 10
+	    RoundCorner 25
+	    LineThickness 1.5
+	}
+	arrow {
+	    LineThickness 1.0
+	}
+}
+
+
+wbsDiagram {
+    Padding 10
+    Margin 15
+    RoundCorner 0
+    LineThickness 1.5
+    FontSize 12
+}
+
+activityDiagram {
+  Shadowing 3.0
+}
+
+activityDiagram {
+	activity {
+	    LineThickness 1.5
+	    Padding 10
+	    FontSize 12
+	    RoundCorner 25
+	}
+	partition {
+	    LineColor black
+	    BackgroundColor none
+	}
+	diamond {
+	    FontSize 11
+	}
+	arrow {
+	    FontSize 11
+	}
+}
+
+activityBar {
+	LineColor black
+}
+
+circle {
+	LineColor black
+	Shadowing 3.0
+}
+
+'/
