@@ -14,7 +14,7 @@
 !$httpRedirect2 = "<back:purple><color:purple>-<color:white>↳ 301<color:purple>-</color></back>" 
 
 ' warning! breaks newpage stuff
-!pragma teoz true
+¸¸
 
 skinparam BoxPadding 10
 skinparam ParticipantPadding 5
@@ -42,10 +42,77 @@ classDiagram {
     }
 }
 
+' ------------------------------------------------------------------------------------------------
+
+.codeNote {
+    BackgroundColor #f0f0f0
+    FontColor #333333
+    LineThickness 0.5
+    FontSize 10
+    LineColor #999999
+    'FontStyle bold
+}
+
+'Note you can skip period in style declaration
+
+.infoNote {
+    LineColor #B7950B
+    BackgroundColor #FCF3CF
+}
+
+.greenNote {
+    LineColor #green
+    LineThickness 0.5
+    BackgroundColor #PHYSICAL
+
+    ' More saturation
+    ' BackgroundColor #99FF99
+    ' LineColor #3DB83D
+}
+
+.processLabel {
+    LineColor #ABB2B9
+    BackgroundColor #EAECEE
+    LineThickness 1
+    FontColor #ABB2B9
+    RoundCorner 10
+}
+
+.crimsonLabel {
+    BackgroundColor #A80036
+    LineThickness 0
+    FontColor #white
+    RoundCorner 10
+}
+
+.orangeLabel {
+    BackgroundColor #FF7f00
+    LineThickness 0
+    FontColor #white
+    RoundCorner 10
+}
+
+.purpleLabel {
+    BackgroundColor #purple
+    LineThickness 0
+    FontColor #white
+    RoundCorner 10
+}
+
+.transparentLabel {
+    ' white actually
+    BackgroundColor #transparent
+    LineThickness 0
+    'FontColor #white
+    'RoundCorner 10
+}
+
+' ------------------------------------------------------------------------------------------------
+
 sequenceDiagram {   
 
     'LineThickness 2
-    
+
     arrow {
         'LineThickness 3
         LineColor #454645
@@ -149,70 +216,12 @@ sequenceDiagram {
     ' A bug: does not affect on divider + does not like 'true|false'
     Shadowing 0
 
-    .codeNote {
-        BackgroundColor #f0f0f0
-        FontColor #333333
-        LineThickness 0.5
-        FontSize 10
-        LineColor #999999
-        'FontStyle bold
-	}
-
-    infoNote {
-        LineColor #B7950B
-        BackgroundColor #FCF3CF
-    }
-
-    .processLabel {
-        LineColor #ABB2B9
-        BackgroundColor #EAECEE
-        LineThickness 1
-        FontColor #ABB2B9
-        RoundCorner 10
-    }
-
-    .crimsonLabel {
-        BackgroundColor #A80036
-        LineThickness 0
-        FontColor #white
-        RoundCorner 10
-    }
-
-    .orangeLabel {
-        BackgroundColor #FF7f00
-        LineThickness 0
-        FontColor #white
-        RoundCorner 10
-    }
-
-    .redirectLabel {
-        BackgroundColor #transparent
-        LineThickness 0
-        FontColor #white
-        ' RoundCorner 10
-    }
-
     'Set it neither here nor in skinparam: a bug in engine with background color
     'it is better use custom styles for all notes! 
     'note {
         'LineColor #B7950B
         'BackgroundColor #FCF3CF
     '}
-
-	'note1 { 
-	'   BackgroundColor GreenYellow 
-    '   RoundCorner 10
-    '   LineStyle 10;2
-       'Padding 40
-	'}
-
-	'rnote1 { 
-	'   BackgroundColor White 
-    '   RoundCorner 10
-    '   LineStyle 10;2
-       'Padding 40
-	'}
-
 }
 </style> 
 
