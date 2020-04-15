@@ -14,7 +14,7 @@
 !$httpRedirect2 = "<back:purple><color:purple>-<color:white>↳ 301<color:purple>-</color></back>" 
 
 ' warning! breaks newpage stuff
-¸¸
+!pragma teoz true
 
 skinparam BoxPadding 10
 skinparam ParticipantPadding 5

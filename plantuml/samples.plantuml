@@ -8,7 +8,7 @@
 
 ' autonumber
 
-' <style>
+<style>
 '     .alignedNote {
 '         TextAlignment right
 '         BackgroundColor #f0f0f0
@@ -19,7 +19,17 @@
 '         'FontStyle bold
 '     }
 
-' </style>
+    .infoNote111 {
+        'hsl(125, 100%, 90%); background
+        'hsl(125, 100%, 30%); Border
+        'hsl(125, 100%, 20%); Font
+        BackgroundColor #C2FFC7 
+        LineColor #00990d
+        ' LineColor #009F17
+        FontColor #006609
+        LineThickness 0.5
+    }
+</style>
 
 ' skinparam NoteTextAlignment right
 
@@ -82,7 +92,7 @@ Alice -[#0000FF]->Bob : OK
 ' Bob <- Alice : Another authentication Response
 
 
-note <<infoNote>> over Alice: default note
+note <<infoNote>> over Alice: a rectange note\ndsfsdf
 
 ' Add some distance
 ' |||
@@ -96,7 +106,7 @@ rnote <<crimsonLabel>> over L: Crimson Label
 rnote <<orangeLabel>> over L: Orange Label
 rnote <<purpleLabel>> over L: Purple Label
 rnote <<transparentLabel>> over L: Transparent Label 
-rnote <<alignedNote>> over L: Purple Label\nwerwe\nsdfdsf\nsdfsdf
+' rnote <<alignedNote>> over L: Purple Label\nwerwe\nsdfdsf\nsdfsdf
 
 ' .redirectLabel {
 '     BackgroundColor #transparent
