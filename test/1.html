@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>ABC.doc custom links</title>
+<title>Deeplinking test</title>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 <meta name="viewport" content="width=device-width, user-scalable=no" />
 
@@ -27,13 +27,32 @@ input {
 <body>
 
 <script>
-    function resetPassword(schema) {
+
+    // fill the schema
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(document.location.search);
+        const schema = urlParams.get('schema');
+        schemaInput = document.getElementById('schema');        
+        schemaInput.value = schema
+    });
+
+    function getSchema() {
+        return document.getElementById('schema').value
+    }
+
+    function resetPassword() {
+        schema = getSchema()
         token = document.getElementById('reset_password_token').value
         window.open(schema + '://reset-password?token=' + token);
+        return false;
     }
-    function openDocument(schema) {
+
+    function openDocument() {
+        schema = getSchema()
         id = document.getElementById('document_id').value
         window.open(schema + '://open-document?id=' + id);
+        return false;        
     }
     // const mc = document.getElementById('main_container');
     // for (const schema of [ 
@@ -44,7 +63,15 @@ input {
 
 </script>
 
-<div>
+<div class="input_box">
+    <label>Schema</label>
+    <input 
+        name="schema" id="schema" type="text" 
+        class="textfield" value="schema" size="25" maxlength="80" 
+    />
+</div>
+
+<div class="input_box">
     <label>Reset password token</label>
     <input 
         name="reset_password_token" id="reset_password_token" type="text" 
@@ -60,17 +87,9 @@ input {
     />
 </div>    
 
-<h1>DEV</h1>
-<p><a href="link", onClick="resetPassword('abcdoc-dev');" >reset-password</a></p>
-<p><a href="link", onClick="openDocument('abcdoc-dev');" >open-document</a></p>
-
-<h1>STAGING</h1>
-<p><a href="link", onClick="resetPassword('abcdoc-staging');" >reset-password</a></p>
-<p><a href="link", onClick="openDocument('abcdoc-staging');" >open-document</a></p>
-
-<h1>PROD</h1>
-<p><a href="link", onClick="resetPassword('abcdoc');" >reset-password</a></p>
-<p><a href="link", onClick="openDocument('abcdoc');" >open-document</a></p>
+<h1>Commands</h1>
+<p><a href="link", onClick="resetPassword();" >Reset Password</a></p>
+<p><a href="link", onClick="openDocument();" > Open Document</a></p>
 
 </body>
 </html>
