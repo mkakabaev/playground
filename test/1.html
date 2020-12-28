@@ -54,6 +54,14 @@ input {
         window.open(schema + '://open-document?id=' + id);
         return false;        
     }
+
+    function openConsultation() {
+        schema = getSchema()
+        id = document.getElementById('document_id').value
+        window.open(schema + '://consultation-message?document_id=' + id);
+        return false;        
+    }
+
     // const mc = document.getElementById('main_container');
     // for (const schema of [ 
     //     { name: "DEV", schema: "a" },
@@ -90,6 +98,7 @@ input {
 <h1>Commands</h1>
 <p><a href="link", onClick="resetPassword();" >Reset Password</a></p>
 <p><a href="link", onClick="openDocument();" > Open Document</a></p>
+<p><a href="link", onClick="openConsultation();" > Open Consultation</a></p>
 
 </body>
 </html>
