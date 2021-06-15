@@ -48,6 +48,14 @@ input {
         return false;
     }
 
+    function verifyCode() {
+        schema = getSchema()
+        code = document.getElementById('verify_code').value
+        window.open(schema + '://verify-code?code=' + code);
+        return false;
+    }
+
+
     function openDocument() {
         schema = getSchema()
         id = document.getElementById('document_id').value
@@ -88,6 +96,14 @@ input {
 </div>
 
 <div class="input_box">
+    <label>Verify registration code</label>
+    <input 
+        name="verify_code" id="verify_code" type="text" 
+        class="textfield" value="12345" size="25" maxlength="25" 
+    />
+</div>
+
+<div class="input_box">
     <label>Document ID</label>
     <input 
         name="document_id" id="document_id" type="text" 
@@ -99,6 +115,7 @@ input {
 <p><a href="link", onClick="resetPassword();" >Reset Password</a></p>
 <p><a href="link", onClick="openDocument();" > Open Document</a></p>
 <p><a href="link", onClick="openConsultation();" > Open Consultation</a></p>
+<p><a href="link", onClick="verifyCode();" >Verify Code</a></p>
 
 </body>
 </html>
