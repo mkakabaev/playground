@@ -41,12 +41,19 @@ input {
         return document.getElementById('schema').value
     }
 
+    function userApproved() {
+        schema = getSchema()
+        window.open(schema + '://user-approved');
+        return false;
+    }
+
     function resetPassword() {
         schema = getSchema()
         token = document.getElementById('reset_password_token').value
         window.open(schema + '://reset-password?token=' + token);
         return false;
     }
+
 
     function verifyCode() {
         schema = getSchema()
@@ -116,6 +123,7 @@ input {
 <p><a href="link", onClick="openDocument();" > Open Document</a></p>
 <p><a href="link", onClick="openConsultation();" > Open Consultation</a></p>
 <p><a href="link", onClick="verifyCode();" >Verify Code</a></p>
+<p><a href="link", onClick="userApproved();" >User Approved</a></p>
 
 </body>
 </html>
