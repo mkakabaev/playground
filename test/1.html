@@ -32,13 +32,21 @@ input {
 
     document.addEventListener("DOMContentLoaded", function () {
         const urlParams = new URLSearchParams(document.location.search);
-        const schema = urlParams.get('schema');
-        schemaInput = document.getElementById('schema');        
-        schemaInput.value = schema
+
+        for (const key of ['schema', 'facebook']) {
+            const value = urlParams.get(key);
+            input = document.getElementById(key);        
+            input.value = value
+        }
+
     });
 
     function getSchema() {
         return document.getElementById('schema').value
+    }
+
+    function getFacebookAppId() {
+        return document.getElementById('facebook').value
     }
 
     function userApproved() {
@@ -53,7 +61,12 @@ input {
         window.open(schema + '://reset-password?token=' + token);
         return false;
     }
-
+    
+    function openFacebook() {
+        appId = getFacebookAppId()
+        window.open('fb' + appId + '://');
+        return false;
+    }
 
     function verifyCode() {
         schema = getSchema()
@@ -95,6 +108,14 @@ input {
 </div>
 
 <div class="input_box">
+    <label>Facebook App Id</label>
+    <input 
+        name="facebook" id="facebook" type="text" 
+        class="textfield" value="facebook" size="25" maxlength="80" 
+    />
+</div>
+
+<div class="input_box">
     <label>Reset password token</label>
     <input 
         name="reset_password_token" id="reset_password_token" type="text" 
@@ -124,6 +145,7 @@ input {
 <p><a href="link", onClick="openConsultation();" > Open Consultation</a></p>
 <p><a href="link", onClick="verifyCode();" >Verify Code</a></p>
 <p><a href="link", onClick="userApproved();" >User Approved</a></p>
+<p><a href="link", onClick="openFacebook();" >Open using FaceBook</a></p>
 
 </body>
 </html>
