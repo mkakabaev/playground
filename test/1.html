@@ -75,6 +75,11 @@ input {
         return false;
     }
 
+    function emptySchema() {
+        schema = getSchema()
+        window.open(schema + '://');
+        return false;
+    }
 
     function openDocument() {
         schema = getSchema()
@@ -140,6 +145,7 @@ input {
 </div>    
 
 <h1>Commands</h1>
+<p><a href="link", onClick="emptySchema();" >Just schema</a></p>
 <p><a href="link", onClick="resetPassword();" >Reset Password</a></p>
 <p><a href="link", onClick="openDocument();" > Open Document</a></p>
 <p><a href="link", onClick="openConsultation();" > Open Consultation</a></p>
