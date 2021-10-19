@@ -17,6 +17,9 @@ h1 {
 input {
     font-size: 12pt;
 }
+td {
+    padding-right: 18pt;
+} 
 
 .input_box {
     padding: 4px;
@@ -33,16 +36,20 @@ input {
     document.addEventListener("DOMContentLoaded", function () {
         const urlParams = new URLSearchParams(document.location.search);
 
-        for (const key of ['schema', 'facebook']) {
+        for (const key of ['schema', 'facebook', 'af11']) { // TODO:!!
             const value = urlParams.get(key);
             input = document.getElementById(key);        
             input.value = value
         }
-
     });
 
     function getSchema() {
         return document.getElementById('schema').value
+    }
+
+    function openAF(command, params) {
+        af = document.getElementById('af').value
+        window.open(af + '/' + command + '?deep_link_sub1=' + params);
     }
 
     function getFacebookAppId() {
@@ -81,10 +88,12 @@ input {
         return false;
     }
 
-    function openDocument() {
-        schema = getSchema()
+    function openDocument(method) {
         id = document.getElementById('document_id').value
-        window.open(schema + '://open-document?id=' + id);
+        switch (method) {
+            case 'af': openAF('opendoc', id ); break;
+            default: window.open(getSchema() + '://open-document?id=' + id);
+        }
         return false;        
     }
 
@@ -95,14 +104,15 @@ input {
         return false;        
     }
 
-    // const mc = document.getElementById('main_container');
-    // for (const schema of [ 
-    //     { name: "DEV", schema: "a" },
-    //     { name: "STAGING", schema: "s" },
-    //     { name: "PROD", schema: "c" },
-    // ]) {
-
 </script>
+
+<div class="input_box">
+    <label>AF Postfix</label>
+    <input 
+        name="af" id="af" type="text" 
+        class="textfield" value="https://app.abcdoc.ai/e5wL" size="25" maxlength="80" 
+    />
+</div>
 
 <div class="input_box">
     <label>Schema</label>
@@ -145,6 +155,13 @@ input {
 </div>    
 
 <h1>Commands</h1>
+<table>
+<tr>
+    <td>Open Document</td>
+    <td><a href="#", onClick="openDocument();" >Custom</a></td>
+    <td><a href="#", onClick="openDocument('af');" >AF</a></td>
+</tr>
+</table>
 <p><a href="link", onClick="emptySchema();" >Just schema</a></p>
 <p><a href="link", onClick="resetPassword();" >Reset Password</a></p>
 <p><a href="link", onClick="openDocument();" > Open Document</a></p>
