@@ -36,7 +36,7 @@ td {
     document.addEventListener("DOMContentLoaded", function () {
         const urlParams = new URLSearchParams(document.location.search);
 
-        for (const key of ['schema', 'facebook', 'af11']) { // TODO:!!
+        for (const key of ['schema', 'facebook', 'af']) { 
             const value = urlParams.get(key);
             input = document.getElementById(key);        
             input.value = value
@@ -110,7 +110,7 @@ td {
     <label>AF Postfix</label>
     <input 
         name="af" id="af" type="text" 
-        class="textfield" value="https://app.abcdoc.ai/e5wL" size="25" maxlength="80" 
+        class="textfield" value="af_url" size="25" maxlength="80" 
     />
 </div>
 
