@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Deeplinking test</title>
+<title>Deep Linking Test</title>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 <meta name="viewport" content="width=device-width, user-scalable=no" />
 
@@ -30,6 +30,7 @@ td {
 <body>
 
 <script>
+    // cSpell: disable
     document.addEventListener("DOMContentLoaded", function () {
         const urlParams = new URLSearchParams(document.location.search);
 
@@ -67,28 +68,29 @@ td {
         return false;        
     }
 
-
     function openConsultation() {
         id = document.getElementById('document_id').value
         messageId = document.getElementById('message_id').value
         switch (method) {
             case 'af': openAF('openchat', id + "," + messageId); break;
-            default: openCustom(getSchema() + '://consultation-message?document_id=' + id + '&id=' + messageId);
+            default: openCustom('://consultation-message?document_id=' + id + '&id=' + messageId);
         }
         return false;        
     }
 
-
-    function openFacebook() {
-        appId = getFacebookAppId()
-        window.open('fb' + appId + '://');
+    function verifyCode() {
+        code = document.getElementById('verify_code').value
+        switch (method) {
+            case 'af': openAF('verifycode', code ); break;
+            default: openCustom('://verify-code?code=' + code);
+        }
         return false;
     }
 
     function userApproved() {
         switch (method) {
             case 'af': openAF('userapproved', code ); break;
-            default: window.open(getSchema() + '://user-approved');
+            default: openCustom(getSchema() + '://user-approved');
         }
         return false;
     }
@@ -97,17 +99,14 @@ td {
         token = document.getElementById('reset_password_token').value
         switch (method) {
             case 'af': openAF('resetpasswd', token ); break;
-            default: window.open(getSchema() + '://reset-password?token=' + token);
+            default: openCustom(getSchema() + '://reset-password?token=' + token);
         }
         return false;
     }
-    
-    function verifyCode() {
-        code = document.getElementById('verify_code').value
-        switch (method) {
-            case 'af': openAF('verifycode', code ); break;
-            default: window.open(getSchema() + '://verify-code?code=' + code);
-        }
+
+    function openFacebook() {
+        appId = getFacebookAppId()
+        window.open('fb' + appId + '://');
         return false;
     }
 
@@ -130,7 +129,7 @@ td {
 </div>
 
 <div class="input_box">
-    <label>Facebook App Id</label>
+    <label>FB AppId</label>
     <input 
         name="facebook" id="facebook" type="text" 
         class="textfield" value="facebook" size="15" maxlength="80" 
@@ -138,10 +137,10 @@ td {
 </div>
 
 <div class="input_box">
-    <label>Reset password token</label>
+    <label>Reset password</label>
     <input 
         name="reset_password_token" id="reset_password_token" type="text" 
-        class="textfield" value="THE_TOKEN" size="15" maxlength="80" 
+        class="textfield" value="THE_TOKEN" size="10" maxlength="80" 
     />
 </div>
 
@@ -149,7 +148,7 @@ td {
     <label>Verify registration code</label>
     <input 
         name="verify_code" id="verify_code" type="text" 
-        class="textfield" value="12345" size="15" maxlength="25" 
+        class="textfield" value="12345" size="8" maxlength="25" 
     />
 </div>
 
@@ -157,7 +156,7 @@ td {
     <label>Document ID</label>
     <input 
         name="document_id" id="document_id" type="text" 
-        class="textfield" value="123" size="15" maxlength="80" 
+        class="textfield" value="10" size="15" maxlength="80" 
     />
 </div>    
 
