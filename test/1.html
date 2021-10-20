@@ -90,7 +90,7 @@ td {
     function userApproved() {
         switch (method) {
             case 'af': openAF('userapproved', code ); break;
-            default: openCustom(getSchema() + '://user-approved');
+            default: openCustom('://user-approved');
         }
         return false;
     }
@@ -99,7 +99,7 @@ td {
         token = document.getElementById('reset_password_token').value
         switch (method) {
             case 'af': openAF('resetpasswd', token ); break;
-            default: openCustom(getSchema() + '://reset-password?token=' + token);
+            default: openCustom('://reset-password?token=' + token);
         }
         return false;
     }
