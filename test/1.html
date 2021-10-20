@@ -68,7 +68,7 @@ td {
         return false;        
     }
 
-    function openConsultation() {
+    function openConsultation(method) {
         id = document.getElementById('document_id').value
         messageId = document.getElementById('message_id').value
         switch (method) {
@@ -78,7 +78,7 @@ td {
         return false;        
     }
 
-    function verifyCode() {
+    function verifyCode(method) {
         code = document.getElementById('verify_code').value
         switch (method) {
             case 'af': openAF('verifycode', code ); break;
@@ -87,7 +87,7 @@ td {
         return false;
     }
 
-    function userApproved() {
+    function userApproved(method) {
         switch (method) {
             case 'af': openAF('userapproved', code ); break;
             default: openCustom('://user-approved');
@@ -95,7 +95,7 @@ td {
         return false;
     }
 
-    function resetPassword() {
+    function resetPassword(method) {
         token = document.getElementById('reset_password_token').value
         switch (method) {
             case 'af': openAF('resetpasswd', token ); break;
