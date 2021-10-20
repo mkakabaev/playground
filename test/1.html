@@ -30,9 +30,6 @@ td {
 <body>
 
 <script>
-
-    // fill the schema
-
     document.addEventListener("DOMContentLoaded", function () {
         const urlParams = new URLSearchParams(document.location.search);
 
@@ -43,71 +40,79 @@ td {
         }
     });
 
-    function getSchema() {
-        return document.getElementById('schema').value
+    function getSchema() { return document.getElementById('schema').value }
+    function getFacebookAppId() { return document.getElementById('facebook').value }
+
+    function openResult(url, title) {
+        // window.open(url);
+        resultDiv = document.getElementById('result_box')
+        resultDiv.innerHTML = '<a href="'+url+'"><h1>'+url+'<h1></a>'
     }
 
     function openAF(command, params) {
         af = document.getElementById('af').value
-        window.open(af + '/' + command + '?deep_link_sub1=' + params);
+        openResult(af + '/' + command + '?deep_link_sub1=' + params);
     }
 
-    function getFacebookAppId() {
-        return document.getElementById('facebook').value
-    }
-
-    function userApproved() {
-        schema = getSchema()
-        window.open(schema + '://user-approved');
-        return false;
-    }
-
-    function resetPassword() {
-        schema = getSchema()
-        token = document.getElementById('reset_password_token').value
-        window.open(schema + '://reset-password?token=' + token);
-        return false;
-    }
-    
-    function openFacebook() {
-        appId = getFacebookAppId()
-        window.open('fb' + appId + '://');
-        return false;
-    }
-
-    function verifyCode() {
-        schema = getSchema()
-        code = document.getElementById('verify_code').value
-        window.open(schema + '://verify-code?code=' + code);
-        return false;
-    }
-
-    function emptySchema() {
-        schema = getSchema()
-        window.open(schema + '://');
-        return false;
+    function openCustom(url) {
+        openResult(getSchema() + url);
     }
 
     function openDocument(method) {
         id = document.getElementById('document_id').value
         switch (method) {
             case 'af': openAF('opendoc', id ); break;
-            default: window.open(getSchema() + '://open-document?id=' + id);
+            default: openCustom('://open-document?id=' + id);
         }
         return false;        
     }
 
+    function openFacebook() {
+        appId = getFacebookAppId()
+        window.open('fb' + appId + '://');
+        return false;
+    }
+
+    function userApproved() {
+        switch (method) {
+            case 'af': openAF('userapproved', code ); break;
+            default: window.open(getSchema() + '://user-approved');
+        }
+        return false;
+    }
+
+    function resetPassword() {
+        token = document.getElementById('reset_password_token').value
+        switch (method) {
+            case 'af': openAF('resetpasswd', token ); break;
+            default: window.open(getSchema() + '://reset-password?token=' + token);
+        }
+        return false;
+    }
+    
+    function verifyCode() {
+        code = document.getElementById('verify_code').value
+        switch (method) {
+            case 'af': openAF('verifycode', code ); break;
+            default: window.open(getSchema() + '://verify-code?code=' + code);
+        }
+        return false;
+    }
+
     function openConsultation() {
-        schema = getSchema()
         id = document.getElementById('document_id').value
-        window.open(schema + '://consultation-message?document_id=' + id);
+        messageId = document.getElementById('message_id').value
+        switch (method) {
+            case 'af': openAF('openchat', id + "," + messageId); break;
+            default: window.open(getSchema() + '://consultation-message?document_id=' + id + '&id=' + messageId);
+        }
         return false;        
     }
 
 </script>
 
 <div class="input_box">
-    <label>AF Postfix</label>
+    <label>AF</label>
     <input 
         name="af" id="af" type="text" 
         class="textfield" value="af_url" size="25" maxlength="80" 
@@ -154,6 +159,14 @@ td {
     />
 </div>    
 
+<div class="input_box">
+    <label>Message ID</label>
+    <input 
+        name="message_id" id="message_id" type="text" 
+        class="textfield" value="456" size="25" maxlength="80" 
+    />
+</div> 
+
 <h1>Commands</h1>
 <table>
 <tr>
@@ -161,15 +174,31 @@ td {
     <td><a href="#", onClick="openDocument();" >Custom</a></td>
     <td><a href="#", onClick="openDocument('af');" >AF</a></td>
 </tr>
+<tr>
+    <td>Reset Password</td>
+    <td><a href="#", onClick="resetPassword();" >Custom</a></td>
+    <td><a href="#", onClick="resetPassword('af');" >AF</a></td>
+</tr>
+<tr>
+    <td>Open Consultation</td>
+    <td><a href="#", onClick="openConsultation();" >Custom</a></td>
+    <td><a href="#", onClick="openConsultation('af');" >AF</a></td>
+</tr>
+<tr>
+    <td>Verify Code</td>
+    <td><a href="#", onClick="verifyCode();" >Custom</a></td>
+    <td><a href="#", onClick="verifyCode('af');" >AF</a></td>
+</tr>
+<tr>
+    <td>User Approved</td>
+    <td><a href="#", onClick="userApproved();" >Custom</a></td>
+    <td><a href="#", onClick="userApproved('af');" >AF</a></td>
+</tr>
 </table>
-<p><a href="link", onClick="emptySchema();" >Just schema</a></p>
-<p><a href="link", onClick="resetPassword();" >Reset Password</a></p>
-<p><a href="link", onClick="openDocument();" > Open Document</a></p>
-<p><a href="link", onClick="openConsultation();" > Open Consultation</a></p>
-<p><a href="link", onClick="verifyCode();" >Verify Code</a></p>
-<p><a href="link", onClick="userApproved();" >User Approved</a></p>
-<p><a href="link", onClick="openFacebook();" >Open using FaceBook</a></p>
+<p><a href="#", onClick="openFacebook();" >Open using FaceBook</a></p>
 
+<div id="result_box">
+</div>
 </body>
 </html>
 
