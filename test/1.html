@@ -52,7 +52,11 @@ td {
 
     function openAF(command, params) {
         af = document.getElementById('af').value
-        openResult(af + '/' + command + '?deep_link_sub1=' + params);
+        if (params) {
+            openResult(af + '/' + command + '?deep_link_sub1=' + params);
+        } else {
+            openResult(af + '/' + command);
+        }
     }
 
     function openCustom(url) {
@@ -89,7 +93,7 @@ td {
 
     function userApproved(method) {
         switch (method) {
-            case 'af': openAF('userapproved', code ); break;
+            case 'af': openAF('userapproved'); break;
             default: openCustom('://user-approved');
         }
         return false;
