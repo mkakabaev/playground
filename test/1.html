@@ -99,6 +99,14 @@ td {
         return false;
     }
 
+    function openDashboard(method) {
+        switch (method) {
+            case 'af': openAF('open'); break;
+            default: openCustom('://open');
+        }
+        return false;
+    }
+
     function resetPassword(method) {
         token = document.getElementById('reset_password_token').value
         switch (method) {
@@ -174,6 +182,11 @@ td {
 
 <h1>Commands</h1>
 <table>
+<tr>
+    <td>Open Dashboard</td>
+    <td><a href="#", onClick="openDashboard();" >Custom</a></td>
+    <td><a href="#", onClick="openDashboard('af');" >AF</a></td>
+</tr>
 <tr>
     <td>Open Document</td>
     <td><a href="#", onClick="openDocument();" >Custom</a></td>
