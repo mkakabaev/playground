@@ -59,6 +59,14 @@ td {
         }
     }
 
+    function openAFTest(value, params) {
+        af = document.getElementById('af').value
+        openResult(af + '/test?' + 
+            'deep_link_value=' + value + '&' +
+            'deep_link_sub1=' + params 
+        );
+    }    
+
     function openCustom(url) {
         openResult(getSchema() + url);
     }
@@ -94,7 +102,7 @@ td {
     function openAsPromo(method) {
         promo = document.getElementById('promo_id').value
         switch (method) {
-            case 'af': openAF('promo', promo ); break;
+            case 'af': openAFTest('promo', promo ); break;
             default: openCustom('://promo?promo=' + promo);
         }
         return false;
